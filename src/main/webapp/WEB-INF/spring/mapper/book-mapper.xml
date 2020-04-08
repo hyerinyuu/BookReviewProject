@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.biz.rbooks.repository.BookDao">
+ 
+  	<select id="totalCount" resultType="Long">
+		SELECT COUNT(*) FROM tbl_books
+		<where>
+			<foreach collection="b_name" item="b_name" separator="OR">
+				b_name LIKE '%' || #{b_name, jdbcType=VARCHAR} || '%'
+			</foreach>
+		</where>
+	</select>
+
+	<select id="findByBNameListAndPagiNation" resultType="bookDTO">
+		SELECT * FROM
+		(
+		    SELECT /*+ FIRST_ROWS_100 */ ROWNUM AS NUM, IP.* FROM
+		    (
+		        SELECT /*+ INDEX_DESC(P) */ * FROM tbl_books P 
+		        <where>
+					<foreach collection="b_name" item="b_name" separator="OR">
+						b_name LIKE '%' || #{b_name, jdbcType=VARCHAR} || '%'
+					</foreach>
+		        </where>
+		    ) IP
+		    WHERE ROWNUM &lt;= #{pageDTO.limit} 
+		) TBL
+		WHERE NUM &gt;= #{pageDTO.offset}
+	</select>
+ 	
+ 	<select id="getMaxBCode" resultType="String">
+  		SELECT MAX(b_code) FROM tbl_books
+  	</select>
+	  
+	 	
+ </mapper> 
