@@ -1,6 +1,7 @@
 # 독서록 관리 시스템 프로젝트
 * Framework : Spring 3.x
 * DB : oracle 11g
+* BookStrap4
 
 * 기본 Dependencies : MyBatis, MyBatis-Spring, commons-dbcp2, lombok, logback, oracle ojdbc6
 * 추가 Dependencies : spring-security-web
