@@ -12,6 +12,11 @@
 >* 로그인/회원가입
 >* Search 구현
 
+## Main Screenshot
+<div>
+  <img width="100%" src="https://user-images.githubusercontent.com/56293116/78746332-781bba00-79a1-11ea-84d5-e2d859e78e0a.png">
+</div>  
+
 
 
 자세한 내용은 [여기](https://github.com/hyerinyuu/BookReviewProject/blob/master/ReadBookPJPPT.pdf)에서 확인하실 수 있습니다.
